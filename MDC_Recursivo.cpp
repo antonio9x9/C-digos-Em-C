@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-// Returna 1 cso n„o possuam MDC
+// Returna 1 cso n√£o possuam MDC
 int MDC_rec(int x, int y){
 	int aux =0;
 	
@@ -11,29 +11,22 @@ int MDC_rec(int x, int y){
 		y =x;
 	}
 	
-	// caso o segundo temro seja 0, returna o 1∫ como o MDC
+	// caso o segundo temro seja 0, returna o 1¬∫ como o MDC
 	if(y == 0)
 		return x;
 	
-	// pega o resto da divis„o de x por y
+	// pega o resto da divis√£o de x por y
 	int r = x%y;
 	
-	// o caso base, È o resto da divis„o dar zero
+	// o caso base, √© o resto da divis√£o dar zero
 	if(x%y == 0){
 		return y;
 	}
 	else{
-		// vai pegando o resto da divis„o de x por y atÈ que chegue no caso base.
+		// vai pegando o resto da divis√£o de x por y at√© que chegue no caso base.
 		x =y;
 		y = r;
 		r = x%y;
 		return MDC_rec(x, y);
 	}	
-}
-
-int main(){
-	
-	printf("MDC: %d\n", MDC_rec(5, 3));
-	
-	return 0;
 }
