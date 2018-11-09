@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <locale.h>
+
+int main(){
+	setlocale(LC_ALL,"Portuguese");
+	
+	char pri[100], seg[100];
+	int ip=0, is=0, v=0, rep=0;;
+	printf("Digite a primeira seguecia: ");
+	do{
+		scanf("%c", &pri[ip]);
+		if(pri[ip]=='\n')
+			break;
+		ip++;		
+	}while(ip<100);
+	
+	printf("\nDigite a segunda seguencia: ");
+	do{
+		scanf("%c", &seg[is]);
+		if(seg[is]=='\n')
+			break;
+		is++;		
+	}while(is<100);
+	
+	is=0;
+	do{
+		v=0;
+		for(int i =0; i < ip; i++){
+			if(pri[i] == seg[is])
+				v++;
+			is++;
+		}
+				
+		if(v==ip)
+			rep++;				
+				
+	}while(is<100);
+	
+	printf("\n A primeira seguencia se repete na seguda %d veze(s)\n", rep);
+	
+	return 0;
+}
