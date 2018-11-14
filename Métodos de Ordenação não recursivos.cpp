@@ -1,0 +1,87 @@
+#include <stdio.h>
+#include<stdlib.h>
+
+// métodos de ordenação. 
+// posso irdernar pelos, slection sort, bubble sort e pelo inserction sort.
+// Todos eles envilve troca de numeros
+
+void troca(int *n1, int *n2){
+	int aux;
+	aux = *n1;
+	*n1 = *n2;	
+	*n2 = aux;	
+}
+
+// o selection percorre o vetor até achar o primeiro menor, e o coloca na primeira posição, então, vê do segundo em diante
+void SelectionSort(int v[], int tam){
+	int menor=0, ind =0;
+	
+	// un for percorre pra achar o menor, o interno. o externo controla qual casa ele vai trocar
+	for(int i =0; i <tam; i++){
+		menor = v[i];
+		for(int j =i+1; j<tam; j++){
+			if (v[j] < menor){
+				menor = v[j];
+				ind = j;
+			}
+		}
+		troca(&v[i], &v[ind]);
+	}
+}
+
+// o bublle, checa se a proxima posição é menor que o numero atual, se for, ele troca.
+// ele vai levando o mair elemento até o finalo do vetor, como uma bolha subindo
+void BubbleSort(int v[], int tam){
+	// for que percorre os indices
+	for(int i =0; i<tam; i++){
+		// for que vai subindo o maior numero
+		for(int j =0; j<tam-1; j++){
+			if(v[j] > v[j+1]){
+				troca(&v[j], &v[j+1]);
+			}
+		}
+	}	
+}
+
+// eu pego o primeiro elemento, vejo se ele é menor que o proximo. se for, troco até que esse menor esteja na posição 0.
+void InserctionSort(int v[], int tam){
+	
+	for(int i =1 ; i<tam; i++){	
+		int escolhido = v[i];
+		int j = i-1;
+		
+		while (j>=0 && v[j]>escolhido){
+			v[j+1] = v[j];
+			j--;
+		}
+		v[j+1] = escolhido;
+	}
+	
+}
+
+int main(){
+	//int *v = (int*)malloc(sizeof(int)*10);
+	
+	int tam, v[7];
+	
+	v[0] = 2;
+	v[1] = 7;
+	v[2] = 5;
+	v[3] = 8;
+	v[4] = 4;
+	v[5] = 1;
+	v[6] = 0;
+	
+	tam = 7;
+	
+	SelectionSort(v, tam);
+	BubbleSort(v, tam);
+	InserctionSort(v, tam);
+	
+	for(int i =0; i<7; i++){
+		printf("%d", v[i]);
+	}
+	
+	
+	return 0;
+}
